@@ -5,11 +5,15 @@ if (process.env.NODE_ENV !== "production") {
 const express = require("express");
 const port = 3000;
 const app = express();
-const indexRouter = require("./routes/index");
 const hbs = require("express-handlebars").create({
   layoutsDir: __dirname + "/views/layouts",
+  partialsDir: __dirname + "/views/partials",
   extname: "hbs",
   defaultLayout: "main",
+  runtimeOptions: {
+    allowProtoMethodsByDefault: true,
+    allowProtoPropertiesByDefault: true,
+  },
 });
 
 app.set("port", process.env.PORT || port);
@@ -30,7 +34,16 @@ db.once("open", () => {
   console.log("Connected to Mongoose!");
 });
 
+// Body parser
+const bodyParser = require("body-parser");
+app.use(bodyParser.urlencoded({ limit: "10mb", extended: false }));
+
+// Routes
+const indexRouter = require("./routes/index");
+const authorRouter = require("./routes/authors");
+
 app.use("/", indexRouter);
+app.use("/authors", authorRouter);
 
 app.listen(app.get("port"), function () {
   console.log("Server started at http://localhost:" + app.get("port"));
