@@ -1,0 +1,32 @@
+<div>
+    <label>Title</label>
+    <input type="text" name="title" value="{{book.title}}" />
+</div>
+<div>
+    <label>Author</label>
+    <select name="author">
+        {{#each authors}}
+            {{#if (isAuthor ../this this book)}}
+                <option selected label="{{this.name}}" value="{{this.id}}"></option>
+            {{else}}
+                <option label="{{this.name}}" value="{{this.id}}"></option>
+            {{/if}}
+        {{/each}}
+    </select>
+</div>
+<div>
+    <label>Publish Date</label>
+    <input type="date" name="publishDate" value="{{formatPublishDate book}}" />
+</div>
+<div>
+    <labe>Page Count</labe>
+    <input type="number" name="pageCount" min="1" value="{{book.pageCount}}">
+</div>
+<div>
+    <labe>Cover</labe>
+    <input type="file" name="cover">
+</div>
+<div>
+    <labe>Description</labe>
+    <textarea name="description">{{book.description}}</textarea>
+</div>

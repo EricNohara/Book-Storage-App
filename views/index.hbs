@@ -1,1 +1,7 @@
-Welcome {{demo.name}} to the home page.
+<h2>Recently Added</h2>
+<div>
+  {{#each books}}
+    <img height="150" width="100" src="{{this.coverImagePath}}" alt="" />
+    {{this.name}}
+  {{/each}}
+</div>

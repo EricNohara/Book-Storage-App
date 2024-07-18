@@ -5,6 +5,8 @@ if (process.env.NODE_ENV !== "production") {
 const express = require("express");
 const port = 3000;
 const app = express();
+
+// Setting up Handlebars
 const hbs = require("express-handlebars").create({
   layoutsDir: __dirname + "/views/layouts",
   partialsDir: __dirname + "/views/partials",
@@ -13,6 +15,16 @@ const hbs = require("express-handlebars").create({
   runtimeOptions: {
     allowProtoMethodsByDefault: true,
     allowProtoPropertiesByDefault: true,
+  },
+  helpers: {
+    isAuthor: (author, book) => {
+      return author.id === book.author;
+    },
+    formatPublishDate: (book) => {
+      return book.publishDate == null
+        ? ""
+        : book.publishDate.toISOString().split("T")[0];
+    },
   },
 });
 
@@ -41,9 +53,11 @@ app.use(bodyParser.urlencoded({ limit: "10mb", extended: false }));
 // Routes
 const indexRouter = require("./routes/index");
 const authorRouter = require("./routes/authors");
+const bookRouter = require("./routes/books");
 
 app.use("/", indexRouter);
 app.use("/authors", authorRouter);
+app.use("/books", bookRouter);
 
 app.listen(app.get("port"), function () {
   console.log("Server started at http://localhost:" + app.get("port"));
