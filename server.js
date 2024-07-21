@@ -34,6 +34,9 @@ const hbs = require("express-handlebars").create({
       if (booksByAuthor.length > 0) return true;
       else return false;
     },
+    convertToDateString: (date) => {
+      return date.toDateString();
+    },
   },
 });
 

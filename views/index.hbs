@@ -1,7 +1,8 @@
 <h2>Recently Added</h2>
 <div>
   {{#each books}}
-    <img height="150" width="100" src="{{this.coverImagePath}}" alt="" />
-    {{this.name}}
+    <a href="/books/{{this.id}}">
+      <img height="150" width="100" src="{{this.coverImagePath}}" alt="" />
+    </a>
   {{/each}}
 </div>

@@ -4,6 +4,8 @@
 {{#if (checkBooksByAuthor booksByAuthor)}}
     <h2>Books By Author</h2>
     {{#each booksByAuthor}}
-        <img height="150" width="100" src="{{this.coverImagePath}}" alt="" />
+        <a href="/books/{{this.id}}">
+            <img height="150" width="100" src="{{this.coverImagePath}}" alt="" />
+        </a>
     {{/each}}
 {{/if}}
