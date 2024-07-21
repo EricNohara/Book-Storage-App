@@ -3,6 +3,7 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 const express = require("express");
+const methodOverride = require("method-override");
 const port = 3000;
 const app = express();
 
@@ -25,6 +26,14 @@ const hbs = require("express-handlebars").create({
         ? ""
         : book.publishDate.toISOString().split("T")[0];
     },
+    concat: (...args) => {
+      args.pop();
+      return args.join("");
+    },
+    checkBooksByAuthor: (booksByAuthor) => {
+      if (booksByAuthor.length > 0) return true;
+      else return false;
+    },
   },
 });
 
@@ -32,6 +41,7 @@ app.set("port", process.env.PORT || port);
 app.set("view engine", "hbs");
 app.engine("hbs", hbs.engine);
 app.use(express.static("public"));
+app.use(methodOverride("_method"));
 
 // Setting up Database with Mongoose
 const mongoose = require("mongoose");

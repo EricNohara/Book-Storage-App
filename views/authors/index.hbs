@@ -9,4 +9,7 @@
   <div>
     {{this.name}}
   </div>
+  <a href="/authors/{{this.id}}">View</a>
+  <a href="/authors/{{this.id}}/edit">Edit</a>
+  {{> deleteForm url=(concat '/authors/' this.id)}}
 {{/each}}

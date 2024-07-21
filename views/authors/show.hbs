@@ -1,0 +1,9 @@
+<h2>{{author.name}}</h2>
+<a href="/authors/{{author.id}}/edit">Edit</a>
+{{> deleteForm url=(concat '/authors/' author.id)}}
+{{#if (checkBooksByAuthor booksByAuthor)}}
+    <h2>Books By Author</h2>
+    {{#each booksByAuthor}}
+        <img height="150" width="100" src="{{this.coverImagePath}}" alt="" />
+    {{/each}}
+{{/if}}
