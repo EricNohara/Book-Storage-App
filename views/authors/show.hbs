@@ -1,8 +1,10 @@
 <h2 class="page-header">{{author.name}}</h2>
-<a href="/authors/{{author.id}}/edit">Edit</a>
-{{> deleteForm url=(concat '/authors/' author.id)}}
+<div class="btn-row">
+    <a class="btn btn-primary" href="/authors/{{author.id}}/edit">Edit</a>
+    {{> deleteForm url=(concat '/authors/' author.id)}}
+</div>
 {{#if (checkBooksByAuthor booksByAuthor)}}
-    <h2>Books By Author</h2>
+    <h2 class="page-header">Books By Author</h2>
     {{#each booksByAuthor}}
         <a href="/books/{{this.id}}">
             <img height="150" width="100" src="{{this.coverImagePath}}" alt="" />
