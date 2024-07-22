@@ -1,8 +1,2 @@
 <h2 class="page-header">Recently Added</h2>
-<div>
-  {{#each books}}
-    <a href="/books/{{this.id}}">
-      <img height="150" width="100" src="{{this.coverImagePath}}" alt="" />
-    </a>
-  {{/each}}
-</div>
+{{> bookGrid books=books large=true}}

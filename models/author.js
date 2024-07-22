@@ -7,16 +7,18 @@ const authorSchema = mongoose.Schema({
   },
 });
 
-authorSchema.pre("deleteOne", function (next) {
-  Book.find({ author: this.id }, (err, books) => {
-    if (err) {
-      next(err);
-    } else if (books.length > 0) {
+authorSchema.pre("deleteOne", async function (next) {
+  let books;
+  try {
+    books = await Book.find({ author: this.getFilter()._id });
+    if (books.length > 0) {
       next(new Error("This author still has books in the database!"));
     } else {
       next();
     }
-  });
+  } catch (err) {
+    next(err);
+  }
 });
 
 module.exports = mongoose.model("Author", authorSchema);

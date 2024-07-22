@@ -37,6 +37,12 @@ const hbs = require("express-handlebars").create({
     convertToDateString: (date) => {
       return date.toDateString();
     },
+    checkBookCoverClass: (large) => {
+      return large ? "book-cover-large" : "";
+    },
+    checkBookGridClass: (large) => {
+      return large ? "book-grid-large" : "";
+    },
   },
 });
 

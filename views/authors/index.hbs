@@ -12,12 +12,14 @@
 </form>
 <br />
 {{#each authors}}
-  <div>
-    {{this.name}}
-  </div>
-  <div class="btn-row">
-    <a class="btn btn-primary" href="/authors/{{this.id}}">View</a>
-    <a class="btn btn-primary" href="/authors/{{this.id}}/edit">Edit</a>
-    {{> deleteForm url=(concat '/authors/' this.id)}}
+  <div class="author-row">
+    <div class="author-name">
+      {{this.name}}
+    </div>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="/authors/{{this.id}}">View</a>
+      <a class="btn btn-primary" href="/authors/{{this.id}}/edit">Edit</a>
+      {{> deleteForm url=(concat '/authors/' this.id)}}
+    </div>
   </div>
 {{/each}}

@@ -1,0 +1,10 @@
+<div class="book-grid {{checkBookGridClass locals.large}}">
+  {{#each books}}
+    <a href="/books/{{this.id}}">
+      <img
+        class="book-cover {{checkBookCoverClass locals.large}}"
+        src="{{this.coverImagePath}}"
+      />
+    </a>
+  {{/each}}
+</div>
