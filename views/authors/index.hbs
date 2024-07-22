@@ -1,4 +1,4 @@
-<h2>Search Authors</h2>
+<h2 class="page-header">Search Authors</h2>
 <form action="/authors" method="GET">
   <label>Name</label>
   <input type="text" name="name" value="{{searchOptions.name}}" />
@@ -9,7 +9,9 @@
   <div>
     {{this.name}}
   </div>
-  <a href="/authors/{{this.id}}">View</a>
-  <a href="/authors/{{this.id}}/edit">Edit</a>
-  {{> deleteForm url=(concat '/authors/' this.id)}}
+  <div class="btn-row">
+    <a class="btn btn-primary" href="/authors/{{this.id}}">View</a>
+    <a class="btn btn-primary" href="/authors/{{this.id}}/edit">Edit</a>
+    {{> deleteForm url=(concat '/authors/' this.id)}}
+  </div>
 {{/each}}

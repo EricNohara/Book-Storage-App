@@ -2,7 +2,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Site</title>
     <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
     <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css"
     rel="stylesheet"/>
@@ -11,11 +10,16 @@
     <script defer src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
     <script defer src="https://unpkg.com/filepond/dist/filepond.js"></script>
     <script defer src="/javascripts/fileUpload.js"></script>
+    <link rel="stylesheet" href="/stylesheets/main.css">
+    <title>MyBrary</title>
   </head>
   <body>
-    <h1>My Site</h1>
-    {{> header}}
-    {{> errorMessage}}
-    {{{body}}}
+    <div class="container">
+      {{> header}}
+      <div class="inner-container">
+        {{> errorMessage}}
+        {{{body}}}
+      </div>
+    </div>
   </body>
 </html>
